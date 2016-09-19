@@ -29,6 +29,7 @@
 var column = 0;
 var found  = false;
 var ds_Bad = ds_list_create(); // Array of Bad columns to play in
+var ds_No  = ds_list_create(); // Array of impossible columns to play in
 randomize();
 
 for(var i=0; i &lt; global.gWidth; i++)
@@ -105,6 +106,10 @@ else
                 }
                 else
                 {
+                    // This doesnt make sense
+                    // If they player cant play here
+                    // Because the row is full
+                    // Doesn't mean we can't play here
                     if !ds_list_contains(ds_Bad, i)
                     {
                         ds_list_add(ds_Bad, i); 
