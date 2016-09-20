@@ -71,7 +71,6 @@ if found
 }
 else
 {
-    var m = 1;
     // Don't play somewhere that will cause P1 to win
     // Find Danger columns (all the columns we can't play in)
     for(var i=0; i &lt; global.gWidth; i++)
@@ -104,26 +103,18 @@ else
                     // Set P1 place in grid back to empty
                     global.grid[# global.grid_x, global.grid_y] = EMPTY;
                 }
-                else
-                {
-                    // This doesnt make sense
-                    // If they player cant play here
-                    // Because the row is full
-                    // Doesn't mean we can't play here 
-                    
-                    // This should work now
-                    /*if j != hist_x
-                    {       
-                        if !ds_list_contains(ds_Bad, i)
-                        {
-                            ds_list_add(ds_Bad, i); 
-                        } 
-                    }*/
-                }
             }
             
             // Set P1 place in grid back to empty
             global.grid[# hist_x, hist_y] = EMPTY;
+        }
+        else
+        {
+            // If the row is full add it to the bad array
+            if !ds_list_contains(ds_Bad, i)
+            {
+                ds_list_add(ds_Bad, i); 
+            }    
         }
     }
     
