@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>/// Init Menu
+winner = 'Tie Game!';
+
 title = 'Play Again?';
 
 buttons[0] = 'Yes';
@@ -124,11 +126,28 @@ draw_set_color(c_black);
 draw_rectangle(xx-128,yy-128,xx+128,yy+128,true); // border
 draw_set_alpha(1); 
 
-
+//Draw Text
 draw_set_font(fnt_menu);
-draw_set_color(c_black);
+if global.win and global.turn = RED
+{
+    draw_set_color(c_red);
+    winner = 'Red Wins!';
+}
+else if global.win and global.turn = YELLOW
+{
+    draw_set_color(c_yellow);
+    winner = 'Yellow Wins!';    
+}
+else
+{
+    draw_set_color(c_black);
+    winner = 'Tie Game!';
+}
 
-draw_text(xx, yy -64, title);
+draw_text(xx, yy -64, winner);
+
+draw_set_color(c_black);
+draw_text(xx, yy -32, title);
 
 for (var i =0; i &lt; array_length_1d(buttons); i++)
 {

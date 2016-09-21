@@ -4,6 +4,7 @@ if draw_check()
 {
     // Its a TIE   
     show_debug_message('TIE GAME'); 
+    instance_create(0,0,End_Controller);
 }
 else if !win_check(global.turn)
 {

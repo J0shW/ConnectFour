@@ -26,162 +26,38 @@
           <argument>
             <kind>1</kind>
             <string>/// Init AI
-var column = 0;
-var found  = false;
-var ds_Bad = ds_list_create(); // Array of Bad columns to play in
+column = 0;
+ds_Bad = ds_list_create(); // Array of Bad columns to play in
 randomize();
 
-for(var i=0; i &lt; global.gWidth; i++)
+if AI_Win_Check()
 {
-    if start_drop(i)
-    {
-        // Check for AI win
-        global.grid[# global.grid_x, global.grid_y] = global.AI_Color;
-        if win_check(global.AI_Color)
-        {
-            // Found a winning space
-            found = true;
-            column = i;
-            break;
-        } 
-        else
-        {
-            // Check for player 1 win
-            global.grid[# global.grid_x, global.grid_y] = global.P1_Color;    
-            if win_check(global.P1_Color)
-            {
-                // Found a winning space
-                // Take it to prevent P1 from winning
-                global.grid[# global.grid_x, global.grid_y] = global.AI_Color; 
-                found = true;
-                column = i;
-                break;
-            }
-        
-            // Not a winning space, set it back to empty
-            global.grid[# global.grid_x, global.grid_y] = EMPTY;   
-        } 
-    }  
-}
-
-if found
-{
-    // Place winning disc
+    // Place winning disc, or win blocking disc
     instance_create(get_btn_x(column), get_btn_y(column), Disc);
 }
 else
 {
-    // Don't play somewhere that will cause P1 to win
-    // Find Danger columns (all the columns we can't play in)
-    for(var i=0; i &lt; global.gWidth; i++)
-    {
-        if start_drop(i)
-        {
-            // Set AI place in grid
-            var hist_x = global.grid_x;
-            var hist_y = global.grid_y;
-            global.grid[# global.grid_x, global.grid_y] = global.AI_Color;
-            
-            // Loop through each possible P1 move
-            for(var j=0; j &lt; global.gWidth; j++)
-            {
-                if start_drop(j)
-                {
-                    // Set P1 place in grid
-                    global.grid[# global.grid_x, global.grid_y] = global.P1_Color;
-                    
-                    if win_check(global.P1_Color)
-                    {
-                        // Found a winning space for P1
-                        // Add it to Bad columns array
-                        if !ds_list_contains(ds_Bad, i)
-                        {
-                            ds_list_add(ds_Bad, i); 
-                        }
-                    }
-                    
-                    // Set P1 place in grid back to empty
-                    global.grid[# global.grid_x, global.grid_y] = EMPTY;
-                }
-            }
-            
-            // Set P1 place in grid back to empty
-            global.grid[# hist_x, hist_y] = EMPTY;
-        }
-        else
-        {
-            // If the row is full add it to the bad array
-            if !ds_list_contains(ds_Bad, i)
-            {
-                ds_list_add(ds_Bad, i); 
-            }    
-        }
-    }
+    // Find Danger columns
+    AI_Bad_Columns();
     
     if (ds_list_size(ds_Bad) &lt;= 0)
     {
-        // If no Danger columns, advance our own lines
-        
-        // ***TEMPORARY*** play randomly
-        column = irandom(6);
-        
-        while !start_drop(column)
-        {
-            column = irandom(6);    
-        }
-        
-        global.grid[# global.grid_x, global.grid_y] = global.AI_Color;
-        
-        // Place random disc
-        instance_create(get_btn_x(column), get_btn_y(column), Disc);
+        // If no Danger columns, build our own lines
+        AI_Build_Line();
     }
     else if (ds_list_size(ds_Bad) != global.gWidth)
     {     
         // play randomly, but not in a danger column
-        column = irandom(6);
-    
-        while !start_drop(column) or ds_list_contains(ds_Bad, column)
-        {   
-            column = irandom(6);    
-        }
-    
-        global.grid[# global.grid_x, global.grid_y] = global.AI_Color;
-        
-        // Place random disc
-        instance_create(get_btn_x(column), get_btn_y(column), Disc);
+        AI_Avoid_Bad();
     }
     else
     {
         // play randomly in a danger column
-        column = irandom(6);
-    
-        while !start_drop(column)
-        {   
-            column = irandom(6);    
-        }
-    
-        global.grid[# global.grid_x, global.grid_y] = global.AI_Color;
-        
-        // Place random disc
-        instance_create(get_btn_x(column), get_btn_y(column), Disc);
+        AI_Play_Random();
     }
 }
 
 instance_destroy();
-
-
-// finally play randomly
-/*column = irandom(6);
-
-while !start_drop(column)
-{
-    column = irandom(6);    
-}
-
-global.grid[# global.grid_x, global.grid_y] = global.AI_Color;
-
-// Place random disc
-instance_create(get_btn_x(column), get_btn_y(column), Disc);*/
 </string>
           </argument>
         </arguments>

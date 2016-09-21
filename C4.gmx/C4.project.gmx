@@ -26,17 +26,12 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\draw_frame.gml</script>
     <scripts name="Launch Room">
       <script>scripts\Launch_HowTo.gml</script>
       <script>scripts\Launch_Game.gml</script>
       <script>scripts\Launch_End.gml</script>
     </scripts>
     <script>scripts\start_drop.gml</script>
-    <script>scripts\set_disc_x.gml</script>
-    <script>scripts\get_btn_x.gml</script>
-    <script>scripts\get_btn_y.gml</script>
-    <script>scripts\set_disc_y.gml</script>
     <script>scripts\next_turn.gml</script>
     <scripts name="win">
       <script>scripts\get_count.gml</script>
@@ -45,8 +40,22 @@
       <script>scripts\add_win_array.gml</script>
       <script>scripts\clear_win_array.gml</script>
     </scripts>
-    <script>scripts\ds_list_contains.gml</script>
-    <script>scripts\draw_check.gml</script>
+    <scripts name="Misc">
+      <script>scripts\draw_frame.gml</script>
+      <script>scripts\get_btn_y.gml</script>
+      <script>scripts\set_disc_x.gml</script>
+      <script>scripts\get_btn_x.gml</script>
+      <script>scripts\ds_list_contains.gml</script>
+      <script>scripts\set_disc_y.gml</script>
+      <script>scripts\draw_check.gml</script>
+    </scripts>
+    <scripts name="AI">
+      <script>scripts\AI_Win_Check.gml</script>
+      <script>scripts\AI_Bad_Columns.gml</script>
+      <script>scripts\AI_Build_Line.gml</script>
+      <script>scripts\AI_Avoid_Bad.gml</script>
+      <script>scripts\AI_Play_Random.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_menu</font>
