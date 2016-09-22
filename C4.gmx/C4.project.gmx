@@ -52,9 +52,11 @@
     <scripts name="AI">
       <script>scripts\AI_Win_Check.gml</script>
       <script>scripts\AI_Bad_Columns.gml</script>
+      <script>scripts\AI_Bad_Columns_Plus.gml</script>
       <script>scripts\AI_Build_Line.gml</script>
       <script>scripts\AI_Avoid_Bad.gml</script>
       <script>scripts\AI_Play_Random.gml</script>
+      <script>scripts\depth_check.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -73,6 +75,7 @@
       <object>objects\circle</object>
       <object>objects\End_Controller</object>
       <object>objects\AI</object>
+      <object>objects\AI_Plus</object>
     </objects>
     <objects name="HowTo">
       <object>objects\HowTo_Controller</object>
