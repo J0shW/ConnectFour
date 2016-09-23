@@ -30,6 +30,11 @@ for(var i=0; i < global.gWidth; i++)
                         ds_list_add(ds_Bad, i); 
                         ds_list_add(ds_Depth, rDepth);
                     }
+                    else if ds_list_contains(ds_Bad, i)
+                    {
+                        // if its already in ds_Bad check if the current depth is lower
+                        use_low_depth(i, rDepth); 
+                    }
                 }
                 else
                 {
@@ -62,6 +67,11 @@ for(var i=0; i < global.gWidth; i++)
         {
             ds_list_add(ds_Bad, i); 
             ds_list_add(ds_Depth, rDepth);
+        }
+        else if ds_list_contains(ds_Bad, i)
+        {
+            // if its already in ds_Bad check if the current depth is lower
+            use_low_depth(i, rDepth); 
         }    
     }
 }

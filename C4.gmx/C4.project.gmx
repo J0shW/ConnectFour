@@ -47,6 +47,7 @@
       <script>scripts\get_btn_x.gml</script>
       <script>scripts\ds_list_contains.gml</script>
       <script>scripts\ds_list_contains_depth.gml</script>
+      <script>scripts\use_low_depth.gml</script>
       <script>scripts\set_disc_y.gml</script>
       <script>scripts\draw_check.gml</script>
     </scripts>
