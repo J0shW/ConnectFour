@@ -96,7 +96,7 @@ if (global.AI_Color = global.turn)
             <string>/// Start AI turn
 
 // Create AI Object
-instance_create(0,0,AI);
+instance_create(0,0,AI_Plus);
 </string>
           </argument>
         </arguments>

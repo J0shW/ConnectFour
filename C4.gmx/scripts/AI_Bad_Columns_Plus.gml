@@ -35,8 +35,14 @@ for(var i=0; i < global.gWidth; i++)
                 {
                     if rDepth < max_rDepth
                     {
+                        // Store the current depth
+                        var tempDepth = rDepth;
+                    
                         rDepth++;
-                        AI_Bad_Columns_Plus();    
+                        AI_Bad_Columns_Plus(); 
+                        
+                        // After coming out of the recursive function, set rDepth back to the temporary value
+                        rDepth = tempDepth;   
                     }
                 }
                 

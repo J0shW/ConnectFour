@@ -46,6 +46,7 @@
       <script>scripts\set_disc_x.gml</script>
       <script>scripts\get_btn_x.gml</script>
       <script>scripts\ds_list_contains.gml</script>
+      <script>scripts\ds_list_contains_depth.gml</script>
       <script>scripts\set_disc_y.gml</script>
       <script>scripts\draw_check.gml</script>
     </scripts>
@@ -55,8 +56,9 @@
       <script>scripts\AI_Bad_Columns_Plus.gml</script>
       <script>scripts\AI_Build_Line.gml</script>
       <script>scripts\AI_Avoid_Bad.gml</script>
+      <script>scripts\AI_Play_Safe.gml</script>
       <script>scripts\AI_Play_Random.gml</script>
-      <script>scripts\depth_check.gml</script>
+      <script>scripts\same_depth.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">

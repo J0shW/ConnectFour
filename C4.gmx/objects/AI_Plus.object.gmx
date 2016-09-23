@@ -30,7 +30,7 @@ column = 0;
 ds_Bad = ds_list_create(); // Array of Bad columns to play in
 ds_Depth = ds_list_create();
 rDepth = 0; // Recursion depth
-max_rDepth = 2; 
+max_rDepth = 1; 
 randomize();
 
 if AI_Win_Check()
@@ -51,9 +51,9 @@ else
     else if (ds_list_size(ds_Bad) &lt; global.gWidth)
     {
         // play randomly in a safe column
-        //AI_Play_Safe();   
+        AI_Play_Safe();   
     }
-    else if ((ds_list_size(ds_Bad) &gt;= global.gWidth) and !depth_check(0))
+    else if ((ds_list_size(ds_Bad) &gt;= global.gWidth) and !same_depth(0))
     {     
         // play randomly, but not in a danger column
         AI_Avoid_Bad();

@@ -1,9 +1,19 @@
 ///AI_Avoid_Bad
+var bigDepth = 0;
 
-// play randomly, but not in a danger column
+// Get furthest depth
+for(var i=0; i<ds_list_size(ds_Depth); i++)
+{
+    if ds_list_find_value(ds_Depth, i) > bigDepth
+    {
+        bigDepth = ds_list_find_value(ds_Depth, i);
+    }    
+}
+
+// play randomly, but not in a danger column at the furthest depth
 column = irandom(6);
 
-while !start_drop(column) or ds_list_contains(ds_Bad, column)
+while !start_drop(column) or !ds_list_contains_depth(ds_Bad, column, bigDepth)
 {   
     column = irandom(6);    
 }
